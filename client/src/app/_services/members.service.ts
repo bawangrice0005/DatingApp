@@ -28,6 +28,10 @@ export class MembersService {
   }
 
   getUserParams() {
+    // this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
+    //   this.user = user;
+    //   this.userParams = new UserParams(user);
+    // })   
     return this.userParams;
   }
 
@@ -42,6 +46,7 @@ export class MembersService {
 
   getMembers(UserParams: UserParams) {
     var response = this.memberCache.get(Object.values(UserParams).join('-'));
+
     if (response) {
       return of(response);
     }
